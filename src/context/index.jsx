@@ -15,7 +15,7 @@ export default function GlobalState({ children }) {
   const [allTransactions, setAllTransactions] = useState([]);
 
   function handleFormSubmit(currentFormData) {
-    if (!currentFormData.description || !currentFormData.amount) return;
+    if (!currentFormData.description && !currentFormData.amount) return;
 
     setAllTransactions([
       ...allTransactions,
