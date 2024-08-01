@@ -9,18 +9,23 @@ export default function GlobalState({ children }) {
     description: "",
   });
 
-  const [value, setValue] = useState("expense");
+  const [value, setValue] = useState("income");
   const [totalExpense, setTotalExpense] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
   const [allTransactions, setAllTransactions] = useState([]);
 
   function handleFormSubmit(currentFormData) {
-    if (!currentFormData.description && !currentFormData.amount) return;
+    if (currentFormData.description=="" && !currentFormData.amount) return;
 
     setAllTransactions([
       ...allTransactions,
       { ...currentFormData, id: Date.now() },
     ]);
+    setFormData({
+      type: "income",
+      amount: 0,
+      description: "",
+    });
   }
 
   console.log(allTransactions);
